@@ -815,7 +815,7 @@ body::after {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Quicksand', sans-family;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .cancel-btn {

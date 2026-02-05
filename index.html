@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Cute To-Do List ✨</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">✨ My Cute To-Do List ✨</h1>
+                <p class="subtitle">Stay organized and productive!</p>
+            </div>
+        </header>
+
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-info">
+                    <div class="stat-label">Total Tasks</div>
+                    <div class="stat-value" id="totalTasks">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <div class="stat-label">Completed</div>
+                    <div class="stat-value" id="completedTasks">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-info">
+                    <div class="stat-label">Pending</div>
+                    <div class="stat-value" id="pendingTasks">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                    <div class="stat-label">Progress</div>
+                    <div class="stat-value" id="progressPercent">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Form Section -->
+        <div class="input-section">
+            <form id="todoForm" class="todo-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Add a new task... 💭"
+                        autocomplete="off"
+                    >
+                    <span class="error-message" id="todoError"></span>
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="date" 
+                        id="dateInput" 
+                        class="date-input"
+                    >
+                    <span class="error-message" id="dateError"></span>
+                </div>
+                <button type="submit" class="add-btn">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Add Task</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Control Section -->
+        <div class="control-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="🔍 Search tasks..."
+                    autocomplete="off"
+                >
+            </div>
+            <div class="control-buttons">
+                <div class="filter-dropdown">
+                    <button class="filter-btn" id="filterBtn">
+                        <span>🎯 Filter</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="dropdown-menu" id="filterMenu">
+                        <button class="dropdown-item" data-filter="all">All Tasks</button>
+                        <button class="dropdown-item" data-filter="completed">Completed</button>
+                        <button class="dropdown-item" data-filter="pending">Pending</button>
+                        <button class="dropdown-item" data-filter="today">Due Today</button>
+                    </div>
+                </div>
+                <button class="delete-all-btn" id="deleteAllBtn">
+                    <span>🗑️ Delete All</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sort Section -->
+        <div class="sort-section">
+            <button class="sort-btn" data-sort="date-asc">📅 Date (Old → New)</button>
+            <button class="sort-btn" data-sort="date-desc">📅 Date (New → Old)</button>
+            <button class="sort-btn" data-sort="name-asc">🔤 Name (A → Z)</button>
+            <button class="sort-btn active" data-sort="default">✨ Default</button>
+        </div>
+
+        <!-- Tasks List Section -->
+        <div class="tasks-section">
+            <div class="tasks-header">
+                <div class="header-cell task-col">Task</div>
+                <div class="header-cell date-col">Due Date</div>
+                <div class="header-cell status-col">Status</div>
+                <div class="header-cell actions-col">Actions</div>
+            </div>
+            <div class="tasks-list" id="tasksList">
+                <div class="empty-state">
+                    <div class="empty-icon">🌸</div>
+                    <p class="empty-text">No tasks found</p>
+                    <p class="empty-subtext">Add your first task to get started!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">⚠️ Confirm Action</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="modal-btn confirm-btn" id="confirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
